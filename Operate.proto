@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package DC.Packet;
+
+option java_package = "com.packets.operate";
+option java_outer_classname = "operate";
+option java_multiple_files = false;
+
+message Operate_Ban_User {
+	optional string securityCode = 1;
+	optional string nickName = 2;
+}
+
+message Operate_Add_Bad_Word {
+	optional string securityCode = 1;
+	optional string badWord = 2;
+}
+
+message Operate_announceMessageInfo {
+	optional int32 nationType = 1;
+	optional string announceMessage = 2;
+}
+
+message Operate_Add_Announce_Msg {
+	optional string securityCode = 1;
+	repeated .DC.Packet.Operate_announceMessageInfo announceList = 2;
+}

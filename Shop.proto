@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package DC.Packet;
+
+option java_package = "com.packets.shop";
+option java_outer_classname = "shop";
+option java_multiple_files = false;
+
+message SSHOP_CHARACTER_SKIN_INFO {
+	optional string characterSkinId = 1;
+	optional uint32 isHave = 2;
+}
+
+message SSHOP_ITEM_SKIN_INFO {
+	optional string itemSkinId = 1;
+	optional uint32 isHave = 2;
+}
+
+message SSHOP_EMOTE_INFO {
+	optional string emoteId = 1;
+	optional uint32 isHave = 2;
+}
+
+message SC2S_SHOP_CHARACTER_SKIN_LIST_REQ {
+}
+
+message SS2C_SHOP_CHARACTER_SKIN_LIST_RES {
+	optional uint32 loopFlag = 1;
+	repeated .DC.Packet.SSHOP_CHARACTER_SKIN_INFO characterSkinInfoList = 2;
+}
+
+message SC2S_SHOP_ITEM_SKIN_LIST_REQ {
+}
+
+message SS2C_SHOP_ITEM_SKIN_LIST_RES {
+	optional uint32 loopFlag = 1;
+	repeated .DC.Packet.SSHOP_ITEM_SKIN_INFO itemSkinInfoList = 2;
+}
+
+message SC2S_SHOP_EMOTE_LIST_REQ {
+}
+
+message SS2C_SHOP_EMOTE_LIST_RES {
+	optional uint32 loopFlag = 1;
+	repeated .DC.Packet.SSHOP_EMOTE_INFO emoteInfoList = 2;
+}
+
+message SC2S_SHOP_CHARACTER_SKIN_BUY_REQ {
+	optional string buyShopCharacterSkinId = 1;
+}
+
+message SS2C_SHOP_CHARACTER_SKIN_BUY_RES {
+	optional uint32 result = 1;
+	optional string buyShopCharacterSkinId = 2;
+}
+
+message SC2S_SHOP_ITEM_SKIN_BUY_REQ {
+	optional string buyShopItemSkinId = 1;
+}
+
+message SS2C_SHOP_ITEM_SKIN_BUY_RES {
+	optional uint32 result = 1;
+	optional string buyShopItemSkinId = 2;
+}
+
+message SC2S_SHOP_EMOTE_BUY_REQ {
+	optional string buyShopEmoteId = 1;
+}
+
+message SS2C_SHOP_EMOTE_BUY_RES {
+	optional uint32 result = 1;
+	optional string buyShopEmoteId = 2;
+}

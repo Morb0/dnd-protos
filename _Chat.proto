@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "_Character.proto";
+
+package DC.Packet;
+
+option java_package = "com.packets.chat";
+option java_outer_classname = "chat";
+option java_multiple_files = false;
+
+message SCHATDATA_PIECE_ITEM_PROPERTY {
+	optional string pid = 1;
+	optional int32 pv = 2;
+}
+
+message SCHATDATA_PIECE_ITEM {
+	optional uint64 uid = 1;
+	optional string iid = 2;
+	repeated .DC.Packet.SCHATDATA_PIECE_ITEM_PROPERTY pp = 3;
+	repeated .DC.Packet.SCHATDATA_PIECE_ITEM_PROPERTY sp = 4;
+}
+
+message SCHATDATA_PIECE {
+	optional string chatStr = 1;
+	optional .DC.Packet.SCHATDATA_PIECE_ITEM chatDataPieceItem = 2;
+}
+
+message SCHATDATA {
+	optional string accountId = 1;
+	optional string characterId = 2;
+	optional .DC.Packet.SACCOUNT_NICKNAME nickname = 3;
+	optional string partyId = 4;
+	repeated .DC.Packet.SCHATDATA_PIECE chatDataPieceArray = 5;
+}
+
+message SPIECE_ITEM_BODY {
+	optional uint32 idx = 1;
+	optional .DC.Packet.SCHATDATA_PIECE_ITEM pieces = 2;
+}
+
+message SPIECE_ITEM_ARRAY {
+	repeated .DC.Packet.SPIECE_ITEM_BODY links = 1;
+}

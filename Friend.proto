@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "_Character.proto";
+
+package DC.Packet;
+
+option java_package = "com.packets.friend";
+option java_outer_classname = "friend";
+option java_multiple_files = false;
+
+message SC2S_FRIEND_LIST_REQ {
+	optional uint32 pageIndex = 1;
+	optional uint32 pageCapacity = 2;
+}
+
+message SS2C_FRIEND_LIST_RES {
+	repeated .DC.Packet.SCHARACTER_FRIEND_INFO friendInfoList = 1;
+	optional uint32 pageIndex = 2;
+	optional uint32 totalFriendCount = 3;
+	optional uint32 lobbyLocateCount = 4;
+	optional uint32 dungeonLocateCount = 5;
+}
+
+message SC2S_FRIEND_LIST_ALL_REQ {
+}
+
+message SS2C_FRIEND_LIST_ALL_RES {
+	repeated .DC.Packet.SCHARACTER_FRIEND_INFO friendInfoList = 1;
+	optional uint32 loopFlag = 2;
+	optional uint32 totalUserCount = 3;
+	optional uint32 lobbyLocateCount = 4;
+	optional uint32 dungeonLocateCount = 5;
+}
+
+message SC2S_FRIEND_FIND_REQ {
+	optional .DC.Packet.SACCOUNT_NICKNAME nickName = 1;
+}
+
+message SS2C_FRIEND_FIND_RES {
+	optional uint32 result = 1;
+	optional .DC.Packet.SCHARACTER_FRIEND_INFO friendInfo = 2;
+}

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package DC.Packet;
+
+option java_package = "com.packets.item";
+option java_outer_classname = "item";
+option java_multiple_files = false;
+
+message SItem {
+	optional uint64 itemUniqueId = 1;
+	optional string itemId = 2;
+	optional uint32 itemCount = 3;
+	optional uint32 inventoryId = 4;
+	optional uint32 slotId = 5;
+	optional uint32 bEquipped = 6;
+	optional uint32 itemAmmoCount = 7;
+	optional uint32 itemContentsCount = 8;
+	repeated .DC.Packet.SItemProperty primaryPropertyArray = 9;
+	repeated .DC.Packet.SItemProperty secondaryPropertyArray = 10;
+}
+
+message SItemProperty {
+	optional string propertyTypeId = 1;
+	optional int32 propertyValue = 2;
+}
+
+message SItems {
+	repeated .DC.Packet.SItem item = 1;
+}
+
+message SPerk {
+	optional uint32 index = 1;
+	optional string perkId = 2;
+}
+
+message SSkill {
+	optional uint32 index = 1;
+	optional string skillId = 2;
+}
+
+message SSpell {
+	optional uint32 slotIndex = 1;
+	optional uint32 sequenceIndex = 2;
+	optional string spellId = 3;
+}
+
+message SCUSTOMIZE_CHARACTER {
+	optional string customizeCharacterId = 1;
+	optional int32 isEquip = 2;
+}
+
+message SCUSTOMIZE_ITEM {
+	optional string customizeItemId = 1;
+	optional int32 isEquip = 2;
+}
+
+message SEMOTE {
+	optional string emoteId = 1;
+	optional int32 equipSlotIndex = 2;
+}
