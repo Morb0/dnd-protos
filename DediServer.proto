@@ -1,164 +1,164 @@
 syntax = "proto3";
 
-import "_Item.proto";
-
 package DC.Packet;
 
-option java_package = "com.packets.dediServer";
-option java_outer_classname = "dediServer";
+import "_Item.proto";
+
 option java_multiple_files = false;
+option java_outer_classname = "dediServer";
+option java_package = "com.packets.dediServer";
 
 message S2C_GameEnterUser_Json {
-	optional string restUrl = 1;
-	optional bytes nickName = 2;
-	optional bytes streamingNickName = 3;
-	optional string characterClass = 4;
-	optional string characterId = 5;
-	optional uint32 gender = 6;
-	optional uint32 level = 7;
-	optional string partyId = 8;
+    string restUrl = 1;
+    bytes nickName = 2;
+    bytes streamingNickName = 3;
+    string characterClass = 4;
+    string characterId = 5;
+    uint32 gender = 6;
+    uint32 level = 7;
+    string partyId = 8;
 }
 
 message GameExitAdvPoint {
-	optional uint32 advPointType = 1;
-	optional uint32 advPoint = 2;
+    uint32 advPointType = 1;
+    uint32 advPoint = 2;
 }
 
 message GameExitExpPoint {
-	optional uint32 expPointType = 1;
-	optional uint32 expPoint = 2;
+    uint32 expPointType = 1;
+    uint32 expPoint = 2;
 }
 
 message Killlog {
-	optional string instigatorAccountId = 1;
-	optional string instigatorName = 2;
-	optional string effectCauserName = 3;
-	optional uint32 hitBoxType = 4;
+    string instigatorAccountId = 1;
+    string instigatorName = 2;
+    string effectCauserName = 3;
+    uint32 hitBoxType = 4;
 }
 
 message MonsterKillLog {
-	optional string monsterName = 1;
-	optional uint32 monsterKillCount = 2;
+    string monsterName = 1;
+    uint32 monsterKillCount = 2;
 }
 
 message C2S_GameExitUser_POST {
-	enum ESCAPE {
-		NONE = 0;
-		SUCCESS = 1;
-		FAIL = 2;
-	}
-
-	optional uint32 escape = 1;
-	optional string accountId = 2;
-	optional string characterId = 3;
-	optional uint64 gameId = 4;
-	repeated .DC.Packet.SItem items = 5;
-	repeated .DC.Packet.SItem guaranteedItems = 6;
-	optional string characterClass = 7;
-	optional uint32 killCount = 8;
-	repeated .DC.Packet.GameExitAdvPoint advPoints = 9;
-	optional string escapeMapName = 10;
-	optional string reason = 11;
-	repeated .DC.Packet.GameExitExpPoint expPoints = 12;
-	repeated .DC.Packet.Killlog killLogData = 13;
-	repeated .DC.Packet.MonsterKillLog monsterKillLogs = 14;
-	optional uint32 gameDifficultyType = 15;
-	optional uint32 needBlock = 16;
+    uint32 escape = 1;
+    string accountId = 2;
+    string characterId = 3;
+    uint64 gameId = 4;
+    repeated SItem items = 5;
+    repeated SItem guaranteedItems = 6;
+    string characterClass = 7;
+    uint32 killCount = 8;
+    repeated GameExitAdvPoint advPoints = 9;
+    string escapeMapName = 10;
+    string reason = 11;
+    repeated GameExitExpPoint expPoints = 12;
+    repeated Killlog killLogData = 13;
+    repeated MonsterKillLog monsterKillLogs = 14;
+    uint32 gameDifficultyType = 15;
+    uint32 needBlock = 16;
+    
+    enum ESCAPE {
+        NONE = 0;
+        SUCCESS = 1;
+        FAIL = 2;
+    }
 }
 
 message C2S_GameEnterUser_Post {
-	optional string accountId = 1;
-	optional string characterId = 2;
-	optional uint64 gameId = 3;
-	optional uint32 isSuccess = 4;
+    string accountId = 1;
+    string characterId = 2;
+    uint64 gameId = 3;
+    uint32 isSuccess = 4;
 }
 
 message StartGameSessionDataDiscrepancy {
-	optional uint32 movementTimeDiscrepancyDetection = 1;
-	optional uint32 movementTimeDiscrepancyResolution = 2;
-	optional float movementTimeDiscrepancyMaxTimeMargin = 3;
-	optional float movementTimeDiscrepancyMinTimeMargin = 4;
-	optional float movementTimeDiscrepancyResolutionRate = 5;
-	optional float movementTimeDiscrepancyDriftAllowance = 6;
-	optional uint32 movementTimeDiscrepancyForceCorrectionsDuringResolution = 7;
+    uint32 movementTimeDiscrepancyDetection = 1;
+    uint32 movementTimeDiscrepancyResolution = 2;
+    float movementTimeDiscrepancyMaxTimeMargin = 3;
+    float movementTimeDiscrepancyMinTimeMargin = 4;
+    float movementTimeDiscrepancyResolutionRate = 5;
+    float movementTimeDiscrepancyDriftAllowance = 6;
+    uint32 movementTimeDiscrepancyForceCorrectionsDuringResolution = 7;
 }
 
 message StartGameSessionDataHackPolicy {
-	optional uint32 hack_iron_shield_scan_speed_hack = 1;
-	optional uint32 hack_iron_shield_scan_dll_injection = 2;
-	optional uint32 hack_movement_scan = 3;
-	optional uint32 hack_melee_attack_scan = 4;
-	optional uint32 hack_invalid_item_scan = 5;
-	optional uint32 hack_interaction_scan = 6;
+    uint32 hack_iron_shield_scan_speed_hack = 1;
+    uint32 hack_iron_shield_scan_dll_injection = 2;
+    uint32 hack_movement_scan = 3;
+    uint32 hack_melee_attack_scan = 4;
+    uint32 hack_invalid_item_scan = 5;
+    uint32 hack_interaction_scan = 6;
 }
 
 message S2C_GameStartServer_Json {
-	optional string restUrl = 1;
-	optional uint64 gameId = 2;
-	optional uint32 maxGameUser = 3;
-	optional uint32 waitTimeSec = 4;
-	optional .DC.Packet.StartGameSessionDataDiscrepancy discrepancy = 5;
-	optional uint32 gameHackPolicy = 6;
-	optional uint32 validPlayerMeleeAttackRange = 7;
-	optional uint32 gameDifficultyType = 8;
-	optional uint32 shippingLogOnOffPolicy = 9;
-	optional uint32 shippingLogLevelPolicy = 10;
-	optional uint32 gmOnOffPolicy = 11;
-	optional uint32 allowed_interaction_policy = 12;
-	optional float allowed_interaction_distance = 13;
-	optional float allowed_interaction_xy_distance = 14;
-	optional .DC.Packet.StartGameSessionDataHackPolicy hackPolicy = 15;
+    string restUrl = 1;
+    uint64 gameId = 2;
+    uint32 maxGameUser = 3;
+    uint32 waitTimeSec = 4;
+    StartGameSessionDataDiscrepancy discrepancy = 5;
+    uint32 gameHackPolicy = 6;
+    uint32 validPlayerMeleeAttackRange = 7;
+    uint32 gameDifficultyType = 8;
+    uint32 shippingLogOnOffPolicy = 9;
+    uint32 shippingLogLevelPolicy = 10;
+    uint32 gmOnOffPolicy = 11;
+    uint32 allowed_interaction_policy = 12;
+    float allowed_interaction_distance = 13;
+    float allowed_interaction_xy_distance = 14;
+    StartGameSessionDataHackPolicy hackPolicy = 15;
 }
 
 message C2S_GameEndServer_POST {
-	repeated .DC.Packet.GameEndUserInfo users = 1;
-	optional uint64 gameId = 2;
+    repeated GameEndUserInfo users = 1;
+    uint64 gameId = 2;
 }
 
 message GameEndUserInfo {
-	optional string accountId = 1;
-	optional uint32 kill = 2;
-	optional uint32 death = 3;
+    string accountId = 1;
+    uint32 kill = 2;
+    uint32 death = 3;
 }
 
 message C2S_GameStart_POST {
-	optional uint64 gameId = 1;
-	repeated string mapNames = 2;
+    uint64 gameId = 1;
+    repeated string mapNames = 2;
 }
 
 message C2S_GameCharacterInfo_Get {
-	optional uint64 gameId = 1;
-	optional string accountId = 2;
-	optional string characterId = 3;
+    uint64 gameId = 1;
+    string accountId = 2;
+    string characterId = 3;
 }
 
 message S2C_GameCharacterInfo_Json {
-	optional uint64 gameId = 1;
-	optional string accountId = 2;
-	optional string characterId = 3;
-	repeated .DC.Packet.SItem items = 4;
-	repeated .DC.Packet.SPerk perks = 5;
-	repeated .DC.Packet.SSkill skills = 6;
-	repeated .DC.Packet.SSpell spells = 7;
-	repeated string characterSkinIds = 8;
-	repeated string itemSkinIds = 9;
-	repeated .DC.Packet.SEMOTE emotes = 10;
+    uint64 gameId = 1;
+    string accountId = 2;
+    string characterId = 3;
+    repeated SItem items = 4;
+    repeated SPerk perks = 5;
+    repeated SSkill skills = 6;
+    repeated SSpell spells = 7;
+    repeated string characterSkinIds = 8;
+    repeated string itemSkinIds = 9;
+    repeated SEMOTE emotes = 10;
 }
 
 message C2S_GameAliveCheck_GET {
-	optional uint64 gameId = 1;
+    uint64 gameId = 1;
 }
 
 message AliveDataInfo {
-	optional string Id = 1;
-	repeated string Us = 2;
+    string Id = 1;
+    repeated string Us = 2;
 }
 
 message C2S_AliveAppendData_GET {
-	optional string Gs = 1;
-	repeated .DC.Packet.AliveDataInfo infos = 2;
+    string Gs = 1;
+    repeated AliveDataInfo infos = 2;
 }
 
 message C2S_GameInterrupt_POST {
-	optional uint64 gameId = 1;
+    uint64 gameId = 1;
 }

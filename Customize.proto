@@ -1,89 +1,92 @@
 syntax = "proto3";
 
-import "_Item.proto";
-
 package DC.Packet;
 
-option java_package = "com.packets.customize";
-option java_outer_classname = "customize";
+import "_Item.proto";
+
 option java_multiple_files = false;
+option java_outer_classname = "customize";
+option java_package = "com.packets.customize";
 
 message SC2S_CUSTOMIZE_CHARACTER_INFO_REQ {
+    
 }
 
 message SS2C_CUSTOMIZE_CHARACTER_INFO_RES {
-	optional uint32 loopFlag = 1;
-	repeated .DC.Packet.SCUSTOMIZE_CHARACTER customizeCharacters = 2;
+    uint32 loopFlag = 1;
+    repeated SCUSTOMIZE_CHARACTER customizeCharacters = 2;
 }
 
 message SC2S_CUSTOMIZE_ITEM_INFO_REQ {
+    
 }
 
 message SS2C_CUSTOMIZE_ITEM_INFO_RES {
-	optional uint32 loopFlag = 1;
-	repeated .DC.Packet.SCUSTOMIZE_ITEM customizeItems = 2;
+    uint32 loopFlag = 1;
+    repeated SCUSTOMIZE_ITEM customizeItems = 2;
 }
 
 message SC2S_CUSTOMIZE_EMOTE_INFO_REQ {
+    
 }
 
 message SS2C_CUSTOMIZE_EMOTE_INFO_RES {
-	optional uint32 loopFlag = 1;
-	repeated .DC.Packet.SEMOTE emotes = 2;
+    uint32 loopFlag = 1;
+    repeated SEMOTE emotes = 2;
 }
 
 message SC2S_CUSTOMIZE_CHARACTER_MOUNT_REQ {
-	optional string customizeCharacterId = 1;
+    string customizeCharacterId = 1;
 }
 
 message SS2C_CUSTOMIZE_CHARACTER_MOUNT_RES {
-	optional uint32 result = 1;
-	repeated .DC.Packet.SCUSTOMIZE_CHARACTER equipCustomizeCharacters = 2;
+    uint32 result = 1;
+    repeated SCUSTOMIZE_CHARACTER equipCustomizeCharacters = 2;
 }
 
 message SC2S_CUSTOMIZE_CHARACTER_UNMOUNT_REQ {
-	optional string customizeCharacterId = 1;
+    string customizeCharacterId = 1;
 }
 
 message SS2C_CUSTOMIZE_CHARACTER_UNMOUNT_RES {
-	optional uint32 result = 1;
-	repeated .DC.Packet.SCUSTOMIZE_CHARACTER equipCustomizeCharacters = 2;
+    uint32 result = 1;
+    repeated SCUSTOMIZE_CHARACTER equipCustomizeCharacters = 2;
 }
 
 message SC2S_CUSTOMIZE_ITEM_MOUNT_REQ {
-	optional string customizeItemId = 1;
-	optional int32 equipSlotIndex = 2;
+    string customizeItemId = 1;
+    int32 equipSlotIndex = 2;
 }
 
 message SS2C_CUSTOMIZE_ITEM_MOUNT_RES {
-	optional uint32 result = 1;
-	repeated .DC.Packet.SCUSTOMIZE_ITEM equipCustomizeItems = 2;
+    uint32 result = 1;
+    repeated SCUSTOMIZE_ITEM equipCustomizeItems = 2;
 }
 
 message SC2S_CUSTOMIZE_ITEM_UNMOUNT_REQ {
-	optional string customizeItemId = 1;
+    string customizeItemId = 1;
 }
 
 message SS2C_CUSTOMIZE_ITEM_UNMOUNT_RES {
-	optional uint32 result = 1;
-	repeated .DC.Packet.SCUSTOMIZE_ITEM equipCustomizeItems = 2;
+    uint32 result = 1;
+    repeated SCUSTOMIZE_ITEM equipCustomizeItems = 2;
 }
 
 message SC2S_CUSTOMIZE_EMOTE_MOUNT_REQ {
-	optional string emoteId = 1;
-	optional uint32 equipSlotIndex = 2;
+    string emoteId = 1;
+    uint32 equipSlotIndex = 2;
 }
 
 message SS2C_CUSTOMIZE_EMOTE_MOUNT_RES {
-	optional uint32 result = 1;
-	repeated .DC.Packet.SEMOTE equipEmotes = 2;
+    uint32 result = 1;
+    repeated SEMOTE equipEmotes = 2;
 }
 
 message SC2S_CUSTOMIZE_EMOTE_UNMOUNT_REQ {
-	optional string emoteId = 1;
+    string emoteId = 1;
 }
 
 message SS2C_CUSTOMIZE_EMOTE_UNMOUNT_RES {
-	optional uint32 result = 1;
-	repeated .DC.Packet.SEMOTE equipEmotes = 2;
+    uint32 result = 1;
+    repeated SEMOTE equipEmotes = 2;
 }

@@ -1,64 +1,64 @@
 syntax = "proto3";
 
-import "_Character.proto";
-
 package DC.Packet;
 
-option java_package = "com.packets.ingame";
-option java_outer_classname = "ingame";
+import "_Character.proto";
+
 option java_multiple_files = false;
+option java_outer_classname = "ingame";
+option java_package = "com.packets.ingame";
 
 message SS2C_ENTER_GAME_SERVER_NOT {
-	optional uint32 port = 1;
-	optional string ip = 2;
-	optional string sessionId = 3;
-	optional string accountId = 4;
-	optional uint32 isReconnect = 5;
-	optional .DC.Packet.SACCOUNT_NICKNAME nickName = 6;
+    uint32 port = 1;
+    string ip = 2;
+    string sessionId = 3;
+    string accountId = 4;
+    uint32 isReconnect = 5;
+    SACCOUNT_NICKNAME nickName = 6;
 }
 
 message SC2S_AUTO_MATCH_REG_REQ {
-	enum MODE {
-		NONE = 0;
-		REGISTER = 1;
-		CANCEL = 2;
-	}
-
-	optional uint32 mode = 1;
-	optional uint32 region = 2;
-	optional uint32 difficultyType = 3;
+    uint32 mode = 1;
+    uint32 region = 2;
+    uint32 difficultyType = 3;
+    
+    enum MODE {
+        NONE = 0;
+        REGISTER = 1;
+        CANCEL = 2;
+    }
 }
 
 message SS2C_AUTO_MATCH_REG_RES {
-	enum RESULT {
-		NONE = 0;
-		SUCCESS = 1;
-		FAIL = 2;
-		FAIL_ALREADY_TRYING = 3;
-		FAIL_NO_READY_PARTY_MEMBER = 4;
-		FAIL_REGION_SELECT = 5;
-		FAIL_SERVER_DISABLE = 6;
-		FAIL_SHORTAGE_ENTRANCE_FEE = 7;
-	}
-
-	optional uint32 result = 1;
+    uint32 result = 1;
+    
+    enum RESULT {
+        NONE = 0;
+        SUCCESS = 1;
+        FAIL = 2;
+        FAIL_ALREADY_TRYING = 3;
+        FAIL_NO_READY_PARTY_MEMBER = 4;
+        FAIL_REGION_SELECT = 5;
+        FAIL_SERVER_DISABLE = 6;
+        FAIL_SHORTAGE_ENTRANCE_FEE = 7;
+    }
 }
 
 message SC2S_GAME_ENTER_COMPLETE_NOT {
-	optional uint32 isSuccess = 1;
+    uint32 isSuccess = 1;
 }
 
 message SS2C_AUTO_MATCH_REG_TEAM_NOT {
-	optional uint32 result = 1;
-	optional uint32 mode = 2;
+    uint32 result = 1;
+    uint32 mode = 2;
 }
 
 message SC2S_RECONNECT_INGAME_REQ {
-	optional uint32 isRefusal = 1;
-	optional .DC.Packet.SACCOUNT_NICKNAME nickName = 2;
+    uint32 isRefusal = 1;
+    SACCOUNT_NICKNAME nickName = 2;
 }
 
 message SS2C_RECONNECT_INGAME_RES {
-	optional uint32 result = 1;
-	optional string serviceUrl = 2;
+    uint32 result = 1;
+    string serviceUrl = 2;
 }

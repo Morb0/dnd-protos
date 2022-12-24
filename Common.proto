@@ -1,87 +1,90 @@
 syntax = "proto3";
 
-import "_Character.proto";
-
 package DC.Packet;
 
-option java_package = "com.packets.common";
-option java_outer_classname = "common";
+import "_Character.proto";
+
 option java_multiple_files = false;
+option java_outer_classname = "common";
+option java_package = "com.packets.common";
 
 message SC2S_META_LOCATION_REQ {
-	optional uint32 location = 1;
+    uint32 location = 1;
 }
 
 message SS2C_META_LOCATION_RES {
-	optional uint32 location = 1;
+    uint32 location = 1;
 }
 
 message SC2S_BLOCK_CHARACTER_REQ {
-	optional string targetAccountId = 1;
-	optional string targetCharacterId = 2;
+    string targetAccountId = 1;
+    string targetCharacterId = 2;
 }
 
 message SS2C_BLOCK_CHARACTER_RES {
-	optional uint32 result = 1;
-	optional .DC.Packet.SBLOCK_CHARACTER targetCharacterInfo = 2;
+    uint32 result = 1;
+    SBLOCK_CHARACTER targetCharacterInfo = 2;
 }
 
 message SC2S_UNBLOCK_CHARACTER_REQ {
-	optional string targetAccountId = 1;
-	optional string targetCharacterId = 2;
+    string targetAccountId = 1;
+    string targetCharacterId = 2;
 }
 
 message SS2C_UNBLOCK_CHARACTER_RES {
-	optional uint32 result = 1;
-	optional string targetCharacterId = 2;
+    uint32 result = 1;
+    string targetCharacterId = 2;
 }
 
 message SC2S_BLOCK_CHARACTER_LIST_REQ {
+    
 }
 
 message SS2C_BLOCK_CHARACTER_LIST_RES {
-	repeated .DC.Packet.SBLOCK_CHARACTER blockCharacters = 1;
+    repeated SBLOCK_CHARACTER blockCharacters = 1;
 }
 
 message SC2S_HACK_LOG_REQ {
-	optional string logMessage = 1;
+    string logMessage = 1;
 }
 
 message SS2C_HACK_LOG_RES {
+    
 }
 
 message ANNOUNCE_MESSAGE {
-	optional int32 nationType = 1;
-	optional string announceMessage = 2;
+    int32 nationType = 1;
+    string announceMessage = 2;
 }
 
 message SS2C_OPERATE_ANNOUNCE_NOT {
-	repeated .DC.Packet.ANNOUNCE_MESSAGE announceList = 1;
+    repeated ANNOUNCE_MESSAGE announceList = 1;
 }
 
 message SERVICE_POLICY {
-	optional int32 policyType = 1;
-	optional int32 policyValue = 2;
+    int32 policyType = 1;
+    int32 policyValue = 2;
 }
 
 message SS2C_SERVICE_POLICY_NOT {
-	repeated .DC.Packet.SERVICE_POLICY policyList = 1;
+    repeated SERVICE_POLICY policyList = 1;
 }
 
 message SC2S_RE_LOGIN_REQ {
+    
 }
 
 message SS2C_RE_LOGIN_RES {
-	optional uint32 isReconnect = 1;
-	optional string address = 2;
-	optional string sessionId = 3;
-	optional string accountId = 4;
+    uint32 isReconnect = 1;
+    string address = 2;
+    string sessionId = 3;
+    string accountId = 4;
 }
 
 message SS2C_CLOSED_GAME_NOT {
-	optional uint32 cyzz = 1;
+    uint32 cyzz = 1;
 }
 
 message SS2C_HACK_CHECK_DLL_LIST_NOT {
-	repeated string DLLList = 1;
+    repeated string DLLList = 1;
 }
