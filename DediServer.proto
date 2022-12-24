@@ -83,6 +83,15 @@ message StartGameSessionDataDiscrepancy {
 	optional uint32 movementTimeDiscrepancyForceCorrectionsDuringResolution = 7;
 }
 
+message StartGameSessionDataHackPolicy {
+	optional uint32 hack_iron_shield_scan_speed_hack = 1;
+	optional uint32 hack_iron_shield_scan_dll_injection = 2;
+	optional uint32 hack_movement_scan = 3;
+	optional uint32 hack_melee_attack_scan = 4;
+	optional uint32 hack_invalid_item_scan = 5;
+	optional uint32 hack_interaction_scan = 6;
+}
+
 message S2C_GameStartServer_Json {
 	optional string restUrl = 1;
 	optional uint64 gameId = 2;
@@ -95,6 +104,10 @@ message S2C_GameStartServer_Json {
 	optional uint32 shippingLogOnOffPolicy = 9;
 	optional uint32 shippingLogLevelPolicy = 10;
 	optional uint32 gmOnOffPolicy = 11;
+	optional uint32 allowed_interaction_policy = 12;
+	optional float allowed_interaction_distance = 13;
+	optional float allowed_interaction_xy_distance = 14;
+	optional .DC.Packet.StartGameSessionDataHackPolicy hackPolicy = 15;
 }
 
 message C2S_GameEndServer_POST {

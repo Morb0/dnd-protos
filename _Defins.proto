@@ -223,6 +223,11 @@ message Define_Hack {
 		GAME_HACK_POLICY_BLOCK = 2;
 		GAME_HACK_POLICY_KICK_AND_BLOCK = 3;
 	}
+
+	enum banType {
+		NONE_BAN_TYPE = 0;
+		CHEATER = 1;
+	}
 }
 
 message Define_Log {

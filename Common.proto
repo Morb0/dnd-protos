@@ -81,3 +81,7 @@ message SS2C_RE_LOGIN_RES {
 message SS2C_CLOSED_GAME_NOT {
 	optional uint32 cyzz = 1;
 }
+
+message SS2C_HACK_CHECK_DLL_LIST_NOT {
+	repeated string DLLList = 1;
+}
